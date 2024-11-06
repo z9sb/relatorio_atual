@@ -1,10 +1,10 @@
-from typing import Optional
-from datetime import date, datetime
-from uuid import UUID
 from dataclasses import dataclass
+from typing import Optional
+from uuid import UUID
+from datetime import date
 
 @dataclass
-class NotaFiscal:
+class NotaFiscalSaida:
     recnum: Optional[int] = None
     filial: Optional[int] = None
     nota_fiscal: Optional[int] = None
@@ -13,7 +13,7 @@ class NotaFiscal:
     serie_nf: Optional[str] = None
     cancelada: Optional[str] = None
     complementar: Optional[str] = None
-    fatura: Optional[int] = None
+    fatura: Optional[str] = None
     nf_devolucao: Optional[int] = None
     nf_modelodev: Optional[str] = None
     conhecimento: Optional[int] = None
@@ -21,10 +21,10 @@ class NotaFiscal:
     dtsaida: Optional[date] = None
     horario_saida: Optional[str] = None
     operacao: Optional[int] = None
-    cfop01: Optional[float] = None
-    cfop02: Optional[float] = None
-    cfop03: Optional[float] = None
-    cfop04: Optional[float] = None
+    cfop01: Optional[int] = None
+    cfop02: Optional[int] = None
+    cfop03: Optional[int] = None
+    cfop04: Optional[int] = None
     natureza_ope: Optional[str] = None
     insc_est_subs: Optional[str] = None
     vr_servico: Optional[float] = None
@@ -59,7 +59,7 @@ class NotaFiscal:
     identidade: Optional[str] = None
     insc_produtor: Optional[str] = None
     qtd_volumes: Optional[int] = None
-    numero: Optional[float] = None
+    numero: Optional[int] = None
     especie: Optional[str] = None
     marca: Optional[str] = None
     peso_bruto: Optional[float] = None
@@ -119,8 +119,8 @@ class NotaFiscal:
     usu_exc: Optional[int] = None
     maq_exc: Optional[str] = None
     envia_pocket: Optional[str] = None
-    dtexportacao: Optional[datetime] = None
-    desconto_icms: Optional[str] = None
+    dtexportacao: Optional[date] = None
+    desconto_icms: Optional[float] = None
     forma_emissao: Optional[str] = None
     vr_ii: Optional[float] = None
     vr_pis: Optional[float] = None
@@ -138,9 +138,9 @@ class NotaFiscal:
     vr_credito: Optional[float] = None
     ddd_celular: Optional[str] = None
     nf_origem: Optional[int] = None
-    seq_nf_origem: Optional[str] = None
+    seq_nf_origem: Optional[int] = None
     nf_substituta: Optional[int] = None
-    seq_nf_substituta: Optional[str] = None
+    seq_nf_substituta: Optional[int] = None
     cnpj_ret: Optional[str] = None
     razao_ret: Optional[str] = None
     endereco_ret: Optional[str] = None
@@ -166,9 +166,9 @@ class NotaFiscal:
     email_entrega: Optional[str] = None
     ie_entrega: Optional[str] = None
     vr_fcp_st: Optional[float] = None
-    intermediadornfe: Optional[int] = None
-    meiopagamento: Optional[int] = None
-    ind_presenca: Optional[int] = None
+    intermediador_nfe: Optional[str] = None
+    meiopagamento: Optional[str] = None
+    ind_presenca: Optional[str] = None
 
     @classmethod
     def from_raw_data(cls, data: list):
