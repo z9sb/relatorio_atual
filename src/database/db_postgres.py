@@ -36,8 +36,7 @@ class DBPostgres:
         return cursor.fetchall()
 
     def get_nf_entrada(self, dt_start, dt_end):
-        """Get all NF Entrada from database.
-        Data dt_emissao as data de emissao"""
+        """Get all NF Entrada from database as key-value pairs."""
         cursor = self.get_cursor(self.connect)
         query = """
             SELECT *
@@ -47,7 +46,12 @@ class DBPostgres:
             WHERE nf.dt_emissao BETWEEN %s AND %s
         """
         cursor.execute(query, (dt_start, dt_end))
-        return cursor.fetchall()
+
+        columns = [desc[0] for desc in cursor.description]
+        results = [dict(zip(columns, row)) for row in cursor.fetchall()]
+
+        return results
+
 
     def get_inf_company(self):
         cursor = self.get_cursor(self.connect)
@@ -62,6 +66,5 @@ class DBPostgres:
 if __name__ == "__main__":
     db = DBPostgres("localhost", 5432, "postgres",
                     "postgres", "integrapgsql")
-    #print(db.get_nf_entrada())
-    company = list(db.get_inf_company())
-    print(company[14])
+    company = list(db.get_nf_entrada('2024-01-01', '2024-01-31'))
+    print(company)

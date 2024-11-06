@@ -13,8 +13,8 @@ from email import encoders
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://mail.google.com/']
 creds = None
-token_path = './src/secrets/token.json'
-credentials_path = './src/secrets/credentials.json'
+token_path = './token.json'
+credentials_path = './credentials.json'
 
 if os.path.exists(token_path):
     creds = Credentials.from_authorized_user_file(token_path, SCOPES)

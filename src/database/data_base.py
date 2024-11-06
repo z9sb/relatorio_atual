@@ -5,6 +5,7 @@ class DataBase:
         self.path = path
         self.conn = sqlite3.connect(self.path)
         self.cursor = self.conn.cursor()
+        self.create_table()
     
     def create_table(self):
         table = """

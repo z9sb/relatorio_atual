@@ -42,11 +42,11 @@ def main() -> None:
     data_entrada = []
     data_saida = []
 
-    db_host = os.getenv("DB_HOST")
-    db_port = int(os.getenv("DB_PORT"))
-    db_username = os.getenv("DB_USER")
-    db_password = os.getenv("DB_PASSWORD")
-    db_name = os.getenv("DB_NAME")
+    db_host = 'localhost' if not os.getenv("DB_HOST") else os.getenv("DB_HOST")
+    db_port = 5432 if not os.getenv("DB_PORT") else int(os.getenv("DB_PORT"))
+    db_username = 'postgres' if not os.getenv("DB_USER") else os.getenv("DB_USER")
+    db_password = 'pg@atualDev' if not os.getenv("DB_PASSWORD") else os.getenv("DB_PASSWORD")
+    db_name = 'integrapgsql' if not os.getenv("DB_NAME") else os.getenv("DB_NAME")
 
     db = DBPostgres(db_host, db_port, db_username, db_password, db_name)
 
