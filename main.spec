@@ -2,7 +2,7 @@
 
 a = Analysis(
     ['src\\main.py'],
-    pathex=['C:\\Users\\raysl_3a68bgu\\OneDrive\\Documentos\\relatorios\\relatorio_atual'],
+    pathex=['C:\\Users\\raysl\\OneDrive\\Documentos\\relatorio_atual'],
     binaries=[],
     datas=[('src', 'src')],  # Adicione mais arquivos ou pastas conforme necessário
     hiddenimports=[],

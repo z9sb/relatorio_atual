@@ -4,7 +4,7 @@ from uuid import UUID
 from datetime import date
 
 @dataclass
-class NotaFiscalEntrada:
+class NFModelEntrada:
     recnum: Optional[int] = None
     filial: Optional[int] = None
     pedido: Optional[int] = None

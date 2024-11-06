@@ -8,6 +8,8 @@ def get_month_start():
 def get_month_end():
     return (date.today() - timedelta(days=date.today().day))
 
+def get_month():
+    return (date.today() - timedelta(days=date.today().day)).strftime("%Y-%m")
 
 if __name__ == "__main__":
-    print(get_month_end())
+    print(get_month())

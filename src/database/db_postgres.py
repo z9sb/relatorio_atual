@@ -1,6 +1,4 @@
 import psycopg2
-import src.database.nf_model_entrada as NFEntrada
-
 
 class DBPostgres:
     def __init__(self, host, port, user, password, dbname):
@@ -51,8 +49,19 @@ class DBPostgres:
         cursor.execute(query, (dt_start, dt_end))
         return cursor.fetchall()
 
+    def get_inf_company(self):
+        cursor = self.get_cursor(self.connect)
+        query = """
+            SELECT * FROM public.cadfil cad
+            WHERE cad.regime_trib = '1';
+            """
+        cursor.execute(query)
+        return cursor.fetchone()
+
 
 if __name__ == "__main__":
     db = DBPostgres("localhost", 5432, "postgres",
-                    "fiscalio@2019", "integrapgsql")
-    print(db.get_nf_entrada())
+                    "postgres", "integrapgsql")
+    #print(db.get_nf_entrada())
+    company = list(db.get_inf_company())
+    print(company[14])
