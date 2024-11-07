@@ -33,7 +33,10 @@ class DBPostgres:
             WHERE dtemissao BETWEEN %s AND %s
         """
         cursor.execute(query, (dt_start, dt_end))
-        return cursor.fetchall()
+        columns = [desc[0] for desc in cursor.description]
+        results = [dict(zip(columns, row)) for row in cursor.fetchall()]
+
+        return results
 
     def get_nf_entrada(self, dt_start, dt_end):
         """Get all NF Entrada from database as key-value pairs."""
