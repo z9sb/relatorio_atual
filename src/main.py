@@ -17,9 +17,9 @@ def check_to_send(competencia, file_name):
         DataBase().insert(str(datetime.now()), competencia, file_name)
         return True
 
-def send_email_attachment(company, start_date, end_date):
+def send_email_attachment(company, start_date, end_date, competencia):
     message = create_message_with_attachment(
-        'me', 'contabilidadebento.xml@gmail.com', company[2], f'{company[14]} {start_date} - {end_date}',['nf_saida.csv', 'nf_entrada.csv']
+        'me', 'contabilidadebento.xml@gmail.com', f'{company[2]} {competencia}', f'{company[14]} {start_date} - {end_date}',['nf_saida.csv', 'nf_entrada.csv']
         )
     send_message(message)
       
@@ -73,7 +73,7 @@ def main() -> None:
     entrada_check = check_to_send(competencia, 'nf_saida.csv')
     saida_check = check_to_send(competencia, 'nf_entrada.csv')
     if entrada_check or saida_check:
-        send_email_attachment(company, start_date, end_date)
+        send_email_attachment(company, start_date, end_date, competencia)
 
 if __name__ == "__main__":
     main()
